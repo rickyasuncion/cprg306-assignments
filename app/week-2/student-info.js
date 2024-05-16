@@ -1,10 +1,11 @@
-const { default: Link } = require("next/link");
+import Link from "next/link";
 
-function StudentInfo() {
+const StudentInfo = () => {
     return (
-      <main>
+      <div>
         <h1>Ricky Asuncion</h1>
-        <Link href={""}></Link>
-      </main>
+        <Link className="color-Blue" href={"https://github.com/rickyasuncion/cprg306-assignments"}>https://github.com</Link>
+      </div>
     );
-  }
+};
+export default StudentInfo;
