@@ -9,11 +9,20 @@ const ItemList = () => {
   items.sort((a, b) => {
     if (sortBy === "name") {
       return a.name.localeCompare(b.name);
-    } else if (sortBy === "category") {
+    } else if (sortBy === "category" || sortBy == "grouped") {
       return a.category.localeCompare(b.category);
     }
     return 0;
   });
+
+  const separatedItems = items.reduce((accumulator, currentItem) => {
+    const { category } = currentItem;
+    if (!accumulator[category]) {
+      accumulator[category] = [];
+    }
+    accumulator[category].push(currentItem);
+    return accumulator;
+  }, {});
 
   return (
     <div>
@@ -40,11 +49,22 @@ const ItemList = () => {
         }}
         className="p-1 m-2 w-40"
       >
-        <p>Sort by (I gave up)</p>
+        <p>Sort by Grouped</p>
       </button>
-      <ul>
-        <Items ItemList={items} />
-      </ul>
+      {sortBy != "grouped" && (
+        <ul>
+          <Items ItemList={items} />
+        </ul>
+      )}
+      {sortBy === "grouped" &&
+        Object.keys(separatedItems).map((category) => (
+          <>
+            <h1 className="text-xl capitalize m-0 border-t-2">{category}</h1>
+            <ul>
+              <Items ItemList={separatedItems[category]} />
+            </ul>
+          </>
+        ))}
     </div>
   );
 };
