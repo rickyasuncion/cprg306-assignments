@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const NewItem = () => {
   const [name, setName] = useState("");
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(1);  
   const [category, setCategory] = useState("Produce");
 
   const submitFunction = (event) => {
