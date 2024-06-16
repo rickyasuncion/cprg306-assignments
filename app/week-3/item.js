@@ -2,7 +2,7 @@ import ItemList from "./item-list";
 
 const Items = () => {
   return ItemList.map((item) => (
-    <li className="p-2 m-4 bg-slate-900 w-1/2 justify-center mx-auto">
+    <li className="p-2 m-4 bg-slate-900 w-1/2 justify-center mx-auto" key={item.id}>
       <ul>
         <li className="text-x font-bold mb-4">{item.name}</li>
         <li>
