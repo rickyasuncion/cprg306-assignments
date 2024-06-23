@@ -1,7 +1,7 @@
 const Items = ({ ItemList, onSelect }) => {
   return ItemList.map((item) => (
     <li 
-      className="p-2 m-4 bg-slate-900 justify-center mx-auto" 
+      className="p-2 m-4 bg-slate-900 justify-center mx-auto cursor-pointer" 
       key={item.id} 
       onClick={() => onSelect(item)}
     >
