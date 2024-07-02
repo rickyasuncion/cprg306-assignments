@@ -9,7 +9,7 @@ import { UserAuth } from "../_utils/auth-context";
 export default function Page() {
   const [items, setItems] = useState(itemsData);
   const [selectedItemName, setSelectedItemName] = useState(null);
-  const { user } = UserAuth();
+  const { user, gitHubSignIn, firebaseSignOut } = UserAuth();
 
   const handleAddItem = (newItem) => {
     setItems((prevItems) => [...prevItems, newItem]);
@@ -26,6 +26,10 @@ export default function Page() {
   };
 
   return !user ? (
+    <main>
+      <h1 className="text-3xl font-bold mb-4">User not logged in</h1>
+    </main>
+  ) : (
     <main className="mx-auto text-center font-serif flex justify-center gap-3">
       <div className="flex-1">
         <h1 className="text-3xl font-bold mb-4">Shopping List</h1>
@@ -35,10 +39,6 @@ export default function Page() {
       <div className="flex-1">
         {selectedItemName && <MealIdeas ingredient={selectedItemName} />}
       </div>
-    </main>
-  ) : (
-    <main>
-      <h1 className="text-3xl font-bold mb-4">User not logged in</h1>
     </main>
   );
 }
