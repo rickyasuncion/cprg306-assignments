@@ -4,6 +4,7 @@ import NewItem from "../shopping-list/new-item";
 import ItemList from "./item-list";
 import MealIdeas from "./meal-ideas";
 import itemsData from "./item.json";
+import { UserAuth } from "../_utils/auth-context";
 
 export default function Page() {
   const [items, setItems] = useState(itemsData);
